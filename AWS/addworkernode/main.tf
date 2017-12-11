@@ -35,7 +35,7 @@ resource "aws_instance" "icpnode" {
     # Specify the ssh connection
     connection {
       user        = "ubuntu"
-      private_key = "${var.Private_SSHKey}
+      private_key = "${var.Private_SSHKey}"
       host        = "${self.public_ip}"
     }
 

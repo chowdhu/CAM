@@ -1,7 +1,7 @@
 [
 {
-  "decsription": "Public SSH Key",
-  "label": "Public SSH Key",
+  "decsription": "Public SSH Key of ICP Master node",
+  "label": "Public SSH Key of ICP Master node",
   "name": "Public_SSHKey",
   "required": true,
   "hidden": false,
@@ -9,8 +9,8 @@
   "default": ""
 },
 {
-  "decsription": "Private SSH Key",
-  "label": "Private SSH Key",
+  "decsription": "Private SSH Key of ICP Master node",
+  "label": "Private SSH Key of ICP Master node",
   "name": "Private_SSHKey",
   "required": true,
   "hidden": false,
