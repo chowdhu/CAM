@@ -22,7 +22,7 @@
   "label": "Subnet IDs",
   "name": "aws_subnet",
   "required": true,
-  "hidden": true,
+  "hidden": false,
   "type": "list",
   "default": [ "subnet-9297fff7", "subnet-b69ff99c" ]
 }]
