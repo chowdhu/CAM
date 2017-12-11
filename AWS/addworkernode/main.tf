@@ -23,9 +23,9 @@ resource "aws_instance" "icpnode" {
   instance_type     = "t2.micro"
   count             = "1"
   ami               = "ami-aa2ea6d0"
-  security_groups   = ["faststart2018-ec2"]
+  security_groups   = ["sg-a4febad1"]
   key_name          = "Sri_Chow"
-  subnet_id         = "${aws_subnet.default.id}"
+  subnet_id         = "${var.aws_subnet[0]}"
 
   tags {
     Name = "ICPNode"
