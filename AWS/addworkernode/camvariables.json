@@ -1,0 +1,28 @@
+[
+{
+  "decsription": "Public SSH Key",
+  "label": "Public SSH Key",
+  "name": "Public_SSHKey",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": ""
+},
+{
+  "decsription": "Private SSH Key",
+  "label": "Private SSH Key",
+  "name": "Private_SSHKey",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": ""
+},
+{
+  "decsription": "Subnet IDs",
+  "label": "Subnet IDs",
+  "name": "aws_subnet",
+  "required": true,
+  "hidden": true,
+  "type": "list",
+  "default": [ "subnet-9297fff7", "subnet-b69ff99c" ]
+}]
