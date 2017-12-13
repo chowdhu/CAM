@@ -1,28 +1,40 @@
 [
-{
-  "decsription": "Public SSH Key of ICP Master node",
-  "label": "Public SSH Key of ICP Master node",
-  "name": "Public_SSHKey",
-  "required": true,
-  "hidden": false,
-  "type": "string",
-  "default": ""
-},
-{
-  "decsription": "Private SSH Key of ICP Master node",
-  "label": "Private SSH Key of ICP Master node",
-  "name": "Private_SSHKey",
-  "required": true,
-  "hidden": false,
-  "type": "string",
-  "default": ""
-},
-{
-  "decsription": "Subnet IDs",
-  "label": "Subnet IDs",
-  "name": "aws_subnet",
-  "required": true,
-  "hidden": false,
-  "type": "list",
-  "default": [ "subnet-9297fff7"]
-}]
+  {
+    "decsription": "Public SSH Key of ICP Master node",
+    "label": "Public SSH Key of ICP Master node",
+    "name": "Public_SSHKey",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCgzKRPYCwf0hYX3GGgnf5ECR/HX0whqXWwE5w4KrtDVy9eZHPVwgJ5xlfsfcLPk9yRFS0YWLLcGiQhu+pbwVW+0NcPDa6m2jLK3QfET+jcu96fF6WSdRXzLr23NsHTUU44bDcSKOXSE+N07qs4lurzNyW+612RlLBCNSDXG8RV7br7q1czPKr5EYRW6LS5xzCJ9V+POydvN2Y1USgT/h0KmnHPgpYHnC9Cj2PB9alRzZkHk2zVvURyZIxDeYNyLJIh0bp0puMnNFRc1AbPZ9bQ7c5sfJCJ7hzjtECdYJVdlG9o4Pmy2EVtL98TAewERMOcsmIb/tn0Cty7QtLK5Ytz root@ibmpc1.csaa.com"
+  },
+  {
+    "decsription": "Master ICP IP Address",
+    "label": "Master ICP IP Address",
+    "name": "master_ip",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "169.48.64.249"
+  },
+  {
+    "decsription": "Master ICP Install direcotry",
+    "label": "Master ICP Install direcotry",
+    "name": "master_icp_installdir",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "/opt/icp210/cluster"
+  },
+  {
+    "decsription": "Subnet IDs",
+    "label": "Subnet IDs",
+    "name": "aws_subnet",
+    "required": true,
+    "hidden": false,
+    "type": "list",
+    "default": [
+      "subnet-9297fff7"
+    ]
+  }
+]
