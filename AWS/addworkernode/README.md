@@ -33,4 +33,5 @@ Currently tested on ubuntu
 **Deploy Template**
 
 * Menu ==> Templates ==> look for template "Add ICP woker node to AWS"
+* Modify the input params accordingly
 * Deploy
