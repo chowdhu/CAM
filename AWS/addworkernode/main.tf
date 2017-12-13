@@ -157,8 +157,7 @@ resource "null_resource" "worker_node_loadDockerImages" {
   }
   provisioner "remote-exec" {
   inline = [
-    "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}:/${var.master_icp_installdir}/images/ibm-cloud-private-x86_64-2.1.0.tar.gz\" /opt; cd /opt; tar xf ibm-cloud-private-x86_64-2.1.0.tar.gz -O | sudo docker load " > /tmp/loaddockerImg.log ",
-  ]
+    "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}:/${var.master_icp_installdir}/images/ibm-cloud-private-x86_64-2.1.0.tar.gz\" /opt; cd /opt; tar xf ibm-cloud-private-x86_64-2.1.0.tar.gz -O | sudo docker load > /tmp/loaddockerImg.log ",  ]
 }
 }
 
