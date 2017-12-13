@@ -29,9 +29,9 @@ variable "aws_subnet" {
     description = "Subnet of the instance"
     default     = [ "subnet-9297fff7", "subnet-b69ff99c" ]
 }
-variable "master_ip" {
-    description = "IP address of the master"
-    default     = "169.48.64.249"
+variable "aws_ami" {
+    description = "AWS AMI Image"
+    default     = "ami-aa2ea6d0"
 }
 variable "master_icp_installdir" {
     description = "Install directory of the master"
