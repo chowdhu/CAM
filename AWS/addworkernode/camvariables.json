@@ -18,13 +18,31 @@
     "default": "169.48.64.249"
   },
   {
-    "decsription": "Master ICP Install direcotry",
+    "decsription": "Master ICP Install directory",
     "label": "Master ICP Install direcotry",
     "name": "master_icp_installdir",
     "required": true,
     "hidden": false,
     "type": "string",
     "default": "/opt/icp210/cluster"
+  },
+  {
+    "decsription": "AMI Image",
+    "label": "AMI Image",
+    "name": "aws_ami",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "ami-aa2ea6d0"
+  },
+  {
+    "decsription": "AWS InstanceType",
+    "label": "AWS InstanceType",
+    "name": "aws_instancetype",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "t2.medium"
   },
   {
     "decsription": "Subnet IDs",

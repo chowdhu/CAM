@@ -13,9 +13,13 @@ variable "ssh_key_path_worker" {
   description = "Path to worker private SSH key, this should be copied into /home/terraform dir of the container"
   default = "/home/terraform/id_aws_chow"
 }
-variable "aws_ami" {
-    description = "AMI of the ubuntu image"
-    default     = "ami-aa2ea6d0"
+variable "master_ip" {
+    description = "IP address of the master"
+    default     = "169.48.64.249"
+}
+variable "aws_instancetype" {
+    description = "AWS Instance type"
+    default     = "t2.medium"
 }
 variable "aws_keyname" {
     description = "Keyname used to provision the ICP cluster"
@@ -35,7 +39,7 @@ variable "master_icp_installdir" {
 }
 
 resource "aws_instance" "icpnode" {
-  instance_type     = "t2.medium"
+  instance_type     = "${var.aws_instancetype}"
   ami               = "${var.aws_ami}"
   key_name          = "${var.aws_keyname}"
   security_groups   = ["sg-a4febad1"]
@@ -45,7 +49,7 @@ resource "aws_instance" "icpnode" {
   }
 
   tags {
-    Name = "ICPNode"
+    Name = "ICPWorkerNode"
   	Owner = "Srinivas.chow"
   	}
 }
@@ -141,9 +145,26 @@ resource "null_resource" "worker_node_prereqs" {
 	}
 }
 
+#For some reason I had to download the image here and do a docker load
+resource "null_resource" "worker_node_loadDockerImages" {
+  depends_on = ["null_resource.worker_node_prereqs"]
+
+  # Specify the ssh connection, this time you can connect using root
+  connection {
+    user        = "root"
+    private_key = "${file(var.ssh_key_path_worker)}"
+    host        = "${aws_instance.icpnode.public_ip}"
+  }
+  provisioner "remote-exec" {
+  inline = [
+    "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}:/${var.master_icp_installdir}/images/ibm-cloud-private-x86_64-2.1.0.tar.gz\" /opt; cd /opt; tar xf ibm-cloud-private-x86_64-2.1.0.tar.gz -O | sudo docker load " > /tmp/loaddockerImg.log ",
+  ]
+}
+}
+
 resource "null_resource" "worker_node_installwk" {
 
-    depends_on = ["null_resource.worker_node_prereqs"]
+    depends_on = ["null_resource.worker_node_loadDockerImages"]
 
     # Specify the ssh connection, this time you can connect using root
     connection {
