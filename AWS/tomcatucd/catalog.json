@@ -1,5 +1,5 @@
 {
-   "name": "Provision Tomcat & PostgreSQL behind ELB in AWS",
+   "name": "Provision Tomcat and PostgreSQL behind ELB in AWS",
    "description": "ELB - Deploys two instances OF Tomcat which are load balanced using ELB",
    "version": "1.0.0.0"
 }

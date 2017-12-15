@@ -75,7 +75,6 @@ resource "aws_instance" "web" {
   ami               = "${var.aws_ami}"
   key_name          = "${var.aws_keyname}"
   security_groups   = ["sg-a4febad1"]
-  subnet_id         = "${var.aws_subnet[0]}"
 
 
   user_data =  <<EOF
