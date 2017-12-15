@@ -1,0 +1,39 @@
+[{
+  "decsription": "AMI Image",
+  "label": "AMI Image",
+  "name": "aws_ami",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "ami-55ef662f"
+},
+{
+  "decsription": "AWS InstanceType",
+  "label": "AWS InstanceType",
+  "name": "aws_instancetype",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "t2.micro"
+},
+{
+  "decsription": "AWS KeyName",
+  "label": "AWS KeyName",
+  "name": "aws_keyname",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "Sri_Chow"
+},
+{
+  "decsription": "Subnet IDs",
+  "label": "Subnet IDs",
+  "name": "aws_subnet",
+  "required": true,
+  "hidden": false,
+  "type": "list",
+  "default": [
+    "subnet-9297fff7"
+  ]
+}
+]
