@@ -74,8 +74,7 @@ resource "aws_instance" "web" {
   availability_zone = "${element(var.azs,count.index)}"
   ami               = "${var.aws_ami}"
   key_name          = "${var.aws_keyname}"
-  security_groups   = ["sg-a4febad1"]
-
+  vpc_security_group_ids = ["sg-a4febad1"]
 
   user_data =  <<EOF
 #!/bin/bash
