@@ -1,0 +1,63 @@
+[{
+  "decsription": "KeyPair Name",
+  "label": "KeyPair Name",
+  "name": "KeyPair_Name",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "myKeyPair"
+},
+{
+  "decsription": "Public SSH Key",
+  "label": "Public SSH Key",
+  "name": "Public_SSHKey",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": ""
+},
+{
+  "decsription": "AWS InstanceType",
+  "label": "AWS InstanceType",
+  "name": "aws_instancetype",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "t2.medium"
+},
+{
+  "decsription": "AMI Image",
+  "label": "AMI Image",
+  "name": "aws_ami",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "ami-55ef662f"
+},
+{
+  "decsription": "Elastic Load Balancer Name",
+  "label": "Elastic Load Balancer Name",
+  "name": "ElasticLoadBalancer_Name",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "CAMUCD-ELB"
+},
+{
+  "decsription": "Availability Zones",
+  "label": "Availability Zones",
+  "name": "azs",
+  "required": true,
+  "hidden": true,
+  "type": "list",
+  "default": [ "us-east-1a", "us-east-1b" ]
+},
+{
+  "decsription": "Subnet IDs",
+  "label": "Subnet IDs",
+  "name": "aws_subnet",
+  "required": true,
+  "hidden": true,
+  "type": "list",
+  "default": [ "subnet-9297fff7", "subnet-b69ff99c" ]
+}]
