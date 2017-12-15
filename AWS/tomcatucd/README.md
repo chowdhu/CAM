@@ -14,7 +14,7 @@ Currently tested on ubuntu
 * Menu ==> Templates ==> Create Template ==> From GitHub => Enter the following ino
   * GIT URL: https://github.com/chowdhu/CAM
   * GitHub Access Token: <>
-  * GitHub Repository sub-directory: /AWS/addworkernode
+  * GitHub Repository sub-directory: /AWS/tomcatucd
   * Save
 
 **Deploy Template**
