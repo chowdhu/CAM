@@ -1,4 +1,4 @@
-# Add AWS worker node to ICP
+# Install Tomcat and PostgreSQL on AWS 
 Currently tested on ubuntu
 
 **Required Inputs**

@@ -1,22 +1,4 @@
 [{
-  "decsription": "KeyPair Name",
-  "label": "KeyPair Name",
-  "name": "KeyPair_Name",
-  "required": true,
-  "hidden": false,
-  "type": "string",
-  "default": "myKeyPair"
-},
-{
-  "decsription": "Public SSH Key",
-  "label": "Public SSH Key",
-  "name": "Public_SSHKey",
-  "required": true,
-  "hidden": false,
-  "type": "string",
-  "default": ""
-},
-{
   "decsription": "AWS InstanceType",
   "label": "AWS InstanceType",
   "name": "aws_instancetype",

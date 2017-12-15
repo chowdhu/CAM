@@ -4,14 +4,9 @@ variable "azs" {
    default     = [ "us-east-1a", "us-east-1b" ]
 }
 
-variable "KeyPair_Name" {
-   description  = "Desired name of the AWS key pair"
-   default = ""
-}
-
-variable "Public_SSHKey" {
-   description  = "Public SSH Key"
-   default = ""
+variable "aws_keyname" {
+    description = "Keyname used to provision the ICP cluster"
+    default     = "Sri_Chow"
 }
 
 variable "aws_subnet" {
@@ -29,15 +24,10 @@ variable "aws_ami" {
 }
 variable "aws_instancetype" {
     description = "AWS Instance type"
-    default     = "t2.macro"
+    default     = "t2.micro"
 }
 provider "aws" {
     region     = "us-east-1"
-}
-
-resource "aws_key_pair" "deployer" {
-  key_name   = "${var.KeyPair_Name}"
-  public_key = "${var.Public_SSHKey}"
 }
 
 
@@ -59,7 +49,7 @@ resource "aws_elb" "web" {
     healthy_threshold   = 2
     unhealthy_threshold = 2
     timeout             = 3
-    target              = "HTTP:80/index.html"
+    target              = "HTTP:8080"
     interval            = 5
   }
 
@@ -83,32 +73,23 @@ resource "aws_instance" "web" {
   count             = "2"
   availability_zone = "${element(var.azs,count.index)}"
   ami               = "${var.aws_ami}"
-  key_name          = "${aws_key_pair.deployer.key_name}"
+  key_name          = "${var.aws_keyname}"
   security_groups   = ["sg-a4febad1"]
+  subnet_id         = "${var.aws_subnet[0]}"
 
 
   user_data =  <<EOF
 #!/bin/bash
-yum update -y
-yum install httpd -y
-service httpd start
-chkconfig httpd on
-myIP=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
-echo 'My IP ==>'$myIP
-cat << EOFF > /var/www/html/index.html
-<html>
-<body>
-<h1>Welcome to my Web Page</h1>
-<hr/>
-<p>MY IP:$myIP </p>
-<hr/>
-</body>
-</html>
-EOFF
+sudo yum update -y
+sudo yum install -y tomcat7-webapps tomcat7-admin-webapps
+sudo service tomcat7 start
+sudo chkconfig tomcat7 on
+
 EOF
 
-  tags {
-    Name = "instance-elb-${count.index}"
+tags {
+  Name = "UCDTomcatPostreSql"
+  Owner = "Srinivas.chow"
   }
 }
 
