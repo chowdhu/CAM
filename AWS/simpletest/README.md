@@ -1,5 +1,5 @@
 # Create tomcat on AWS
-Currently tested on ubuntu
+
 
 **Required Inputs**
 * AWS Access Key and Access Secret

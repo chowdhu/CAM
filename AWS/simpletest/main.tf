@@ -41,5 +41,5 @@ EOF
 }
 
 output "New node ip address " {
-  value = "${aws_instance.web.public_ip}"
+  value = "http://${aws_instance.web.public_ip}:8080"
 }
