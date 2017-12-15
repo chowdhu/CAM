@@ -66,7 +66,7 @@ resource "null_resource" "worker_node_sshkeys" {
     connection {
       user        = "ubuntu"
       private_key = "${file(var.ssh_key_path_worker)}"
-      host        = "${aws_instance.icpnode.public_ip}"
+      host        = "${aws_instance.icpnode.private_ip}"
     }
 
     provisioner "file" {
@@ -108,7 +108,7 @@ resource "null_resource" "worker_node_prereqs" {
     connection {
       user        = "root"
       private_key = "${file(var.ssh_key_path_worker)}"
-      host        = "${aws_instance.icpnode.public_ip}"
+      host        = "${aws_instance.icpnode.private_ip}"
     }
 
     provisioner "file" {
@@ -153,7 +153,7 @@ resource "null_resource" "worker_node_loadDockerImages" {
   connection {
     user        = "root"
     private_key = "${file(var.ssh_key_path_worker)}"
-    host        = "${aws_instance.icpnode.public_ip}"
+    host        = "${aws_instance.icpnode.private_ip}"
   }
   provisioner "remote-exec" {
   inline = [
@@ -169,7 +169,7 @@ resource "null_resource" "worker_node_installwk" {
     connection {
       user        = "root"
       private_key = "${file(var.ssh_key_path_worker)}"
-      host        = "${aws_instance.icpnode.public_ip}"
+      host        = "${aws_instance.icpnode.private_ip}"
     }
 
     # This creates a file on worker, scp the file to master and then executes the file on master from worker
@@ -188,7 +188,7 @@ resource "null_resource" "worker_node_installwk" {
     }
       provisioner "remote-exec" {
       inline = [
-        "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key /tmp/addNode.sh \"${var.master_ip}:/tmp\"; ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}\" '/bin/bash /tmp/addNode.sh \"${aws_instance.icpnode.public_ip}\" \"${var.master_icp_installdir}\"' > /tmp/installwk.log ",
+        "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key /tmp/addNode.sh \"${var.master_ip}:/tmp\"; ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}\" '/bin/bash /tmp/addNode.sh \"${aws_instance.icpnode.private_ip}\" \"${var.master_icp_installdir}\"' > /tmp/installwk.log ",
       ]
     }
     }

@@ -45,6 +45,15 @@
     "default": "t2.medium"
   },
   {
+    "decsription": "AWS KeyName",
+    "label": "AWS KeyName",
+    "name": "aws_keyname",
+    "required": true,
+    "hidden": false,
+    "type": "string",
+    "default": "Sri_Chow"
+  },
+  {
     "decsription": "Subnet IDs",
     "label": "Subnet IDs",
     "name": "aws_subnet",
