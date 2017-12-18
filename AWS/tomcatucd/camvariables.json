@@ -42,4 +42,49 @@
   "hidden": true,
   "type": "list",
   "default": [ "subnet-9297fff7", "subnet-b69ff99c" ]
-}]
+},{
+  "decsription": "PostgreSQl engine version",
+  "label": "PostgreSQl engine version",
+  "name": "aws_dbversion",
+  "required": true,
+  "hidden": false,
+  "type": "string",
+  "default": "9.6.5"
+},
+{
+  "decsription": "AWS Instance type",
+  "label": "AWS Instance type",
+  "name": "aws_instancetype",
+  "required": true,
+  "hidden": true,
+  "type": "string",
+  "default": "db.t2.micro"
+},
+{
+  "decsription": "Name of the databasee",
+  "label": "Name of the databasee",
+  "name": "aws_dbname",
+  "required": true,
+  "hidden": true,
+  "type": "string",
+  "default": "mydb"
+},
+{
+  "decsription": "Userid of the database",
+  "label": "Userid of the database",
+  "name": "aws_dbuid",
+  "required": true,
+  "hidden": true,
+  "type": "string",
+  "default": "dbuser"
+},
+{
+  "decsription": "Password of the database",
+  "label": "Password of the database",
+  "name": "aws_dbpwd",
+  "required": true,
+  "hidden": true,
+  "type": "string",
+  "default": "passw0rd"
+}
+]
