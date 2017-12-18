@@ -33,7 +33,7 @@ variable "aws_dbversion" {
     description = "PostgreSQl engine version"
     default     = "9.6.5"
 }
-variable "aws_instancetype" {
+variable "aws_dbinstancetype" {
     description = "AWS Instance type"
     default     = "db.t2.micro"
 }
@@ -117,7 +117,7 @@ resource "aws_db_instance" "postgresql" {
   storage_type              = "gp2"
   engine                    = "postgres"
   engine_version            = "${var.aws_dbversion}"
-  instance_class            = "${var.aws_instancetype}"
+  instance_class            = "${var.aws_dbinstancetype}"
   name                      = "${var.aws_dbname}"
   username                  = "${var.aws_dbuid}"
   password                  = "${var.aws_dbpwd}"
