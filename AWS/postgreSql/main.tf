@@ -30,7 +30,7 @@ resource "aws_db_instance" "postgresql" {
   instance_class       = "${var.aws_instancetype}"
   name                 = "${var.aws_dbname}"
   username             = "${var.aws_dbuid}"
-  password             = "${var.aws_dpwd}"
+  password             = "${var.aws_dbpwd}"
   multi_az             = false
   storage_encrypted    = false
 
