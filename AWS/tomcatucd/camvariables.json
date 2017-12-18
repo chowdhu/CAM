@@ -54,7 +54,7 @@
 {
   "decsription": "AWS Instance type",
   "label": "AWS Instance type",
-  "name": "aws_instancetype",
+  "name": "aws_dbinstancetype",
   "required": true,
   "hidden": true,
   "type": "string",
