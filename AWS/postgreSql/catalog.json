@@ -1,0 +1,5 @@
+{
+   "name": "Deploy PostgreSQL to AWS",
+   "description": "Deploys a PostgreSQL on AWS",
+   "version": "1.0.0.0"
+}

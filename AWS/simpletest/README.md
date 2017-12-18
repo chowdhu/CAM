@@ -18,6 +18,6 @@
 
 **Deploy Template**
 
-* Menu ==> Templates ==> look for template "Add ICP woker node to AWS"
+* Menu ==> Templates ==> look for template "Deploy Tomcat to AWS"
 * Modify the input params accordingly
 * Deploy
