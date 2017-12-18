@@ -5,7 +5,7 @@
   "required": true,
   "hidden": false,
   "type": "string",
-  "default": "9.4.4"
+  "default": "9.6.5"
 },
 {
   "decsription": "AWS Instance type",
