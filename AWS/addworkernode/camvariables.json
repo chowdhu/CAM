@@ -24,7 +24,7 @@
     "required": true,
     "hidden": false,
     "type": "string",
-    "default": "/opt/icp210/cluster"
+    "default": "/opt/icp2101/cluster"
   },
   {
     "decsription": "AMI Image",

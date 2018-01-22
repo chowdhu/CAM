@@ -114,6 +114,14 @@ resource "null_resource" "worker_node_prereqs" {
     provisioner "file" {
     content = <<EOF
   #!/bin/bash
+  #modifying /etc/hosts
+  IP=$1
+  host=`hostname`
+  #modify xyz to the domain of your customer
+  hostfullname="$host.xyz.com"
+  echo "127.0.0.1 localhost" > /etc/hosts
+  echo "$IP        $host   $hostfullname" >> /etc/hosts
+  cp /etc/hosts /etc/hosts.back
   echo "---start prereqs----"
   #stopping firewall
   sudo service ufw stop
@@ -141,7 +149,7 @@ resource "null_resource" "worker_node_prereqs" {
   destination = "/tmp/prereqs.sh"
   }
     provisioner "remote-exec" {
-	  inline = "bash /tmp/prereqs.sh > /tmp/prereqs.log"
+	  inline = "bash /tmp/prereqs.sh \"${aws_instance.icpnode.private_ip}\" > /tmp/prereqs.log"
 	}
 }
 
@@ -157,7 +165,7 @@ resource "null_resource" "worker_node_loadDockerImages" {
   }
   provisioner "remote-exec" {
   inline = [
-    "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}:/${var.master_icp_installdir}/images/ibm-cloud-private-x86_64-2.1.0.tar.gz\" /opt; cd /opt; tar xf ibm-cloud-private-x86_64-2.1.0.tar.gz -O | sudo docker load > /tmp/loaddockerImg.log ",  ]
+    "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i /root/.ssh/master_key \"${var.master_ip}:/${var.master_icp_installdir}/images/ibm-cloud-private-x86_64-2.1.0.1.tar.gz\" /opt; cd /opt; tar xf ibm-cloud-private-x86_64-2.1.0.1.tar.gz -O | sudo docker load > /tmp/loaddockerImg.log ",  ]
 }
 }
 
@@ -182,7 +190,7 @@ resource "null_resource" "worker_node_installwk" {
     ICP_INSTALL_DIR=$2
     cd $ICP_INSTALL_DIR
     scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -i ssh_key /etc/hosts $WORKER_IP:/etc/hosts
-    docker run -e LICENSE=accept --net=host  -v "$(pwd)":/installer/cluster ibmcom/icp-inception:2.1.0-ee install -l $WORKER_IP
+    docker run -e LICENSE=accept --net=host  -v "$(pwd)":/installer/cluster ibmcom/icp-inception:2.1.0.1-ee install -l $WORKER_IP
     EOF
     destination = "/tmp/addNode.sh"
     }

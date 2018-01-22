@@ -1,5 +1,5 @@
 {
    "name": "Add ICP worker node AWS",
-   "description": "Deploys a worker node instance and adds it to ICP",
+   "description": "Deploys a worker node instance and adds it to ICP2.1.0.1",
    "version": "1.0.0.0"
 }
